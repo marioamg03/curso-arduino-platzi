@@ -1,20 +1,16 @@
-//Variable global
-int led1 = 2; //donde  int indica que es una variable de tipo entero, led1 es el nombre de la variable y 2 el valor
 
-//Constante global 
-const byte led2 = 3; //de esta forma declaramos constantes
-
+const byte led = 3;
+const byte potPin = A0;                   //declaracion de pin analogico 
+int potValue = 0;                         //declaramos una variable para guardar el valor del potenciometro
 
 void setup() {
-  // put your setup code here, to run once:
-  pinMode(led1,OUTPUT);
+  pinMode(led, OUTPUT);                   //declaramos el led como salida
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-  digitalWrite(led1,HIGH);
-  delay(100);
-  digitalWrite(led1,LOW);
-  delay(100);
-  
+  potValue = analogRead(potPin);          //almacenamos el valor del pin analogico de nuestro potenciometro
+  digitalWrite(led, HIGH);                //encendemos el led
+  delay(potValue);                        //damos un delay igual al valor recibido por nuestro potenciometro
+  digitalWrite(led, LOW);                 //apagamos el led
+  delay(potValue);                        //asingamos un delay igual alvalor recibido por nuestro potenciometro
 }
